@@ -1,15 +1,29 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { SERVER_URL, LOCAL_URL } from "./project";
 
-import { Project, SERVER_URL, LOCAL_URL } from './project'
-
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class ProjectService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  getProjects() {
+    return this.http.get<Object[]>(SERVER_URL+'/projects')
+    // return this.http.get<Object[]>(LOCAL_URL)
+  }
 
-  getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(SERVER_URL);
-    }
+  patchProject(id: number, projectId: number = 1) {
+    this.http.patch(`${SERVER_URL}/projects/${projectId}/todos/${id}`, {}).subscribe(
+      res => { 
+        console.log('received ok response from patch request');
+      },
+      error => {
+        console.error('There was an error during the request');
+        console.log(error);
+      })
+    console.log(`${SERVER_URL}/projects/${projectId}/todos/${id}`)
+    
+  }
+
 }

@@ -1,3 +1,17 @@
-<pre> 
-  {{ projects | json}}
-</pre>
+<div class="project-container">
+  <mat-card
+    *ngFor="let iterProject of projects"
+  >
+  <mat-card-header>
+    <mat-card-title>{{iterProject.title}}</mat-card-title>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <section class="todos-section">
+      <p *ngFor="let iterTodos of iterProject.todos">
+        <mat-checkbox (click)="patchTodo()" [checked]="iterTodos.isCompleted">{{iterTodos.text}}</mat-checkbox>
+      </p>
+    </section>
+  </mat-card-content>
+</mat-card>
+</div>

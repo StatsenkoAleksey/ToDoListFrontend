@@ -1,30 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { Project } from './project';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProjectService } from './project.service';
+import { Project } from './project';
+import { plainToClass } from 'class-transformer';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
-  providers: [ ProjectService ]
 })
 export class ProjectComponent implements OnInit {
-
-  projects: Project[] = []
-
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService) {}
+  @Input() card: Project
+  projects: Project[] = [];
 
   ngOnInit(): void {
-    this.getProjects();
+    this.projectService.getProjects().subscribe((projects: Object[]) => {
+      this.projects = plainToClass(Project, projects)
+    })
   }
 
-  getProjects(): void {
-    this.projectService.getProjects()
-      .subscribe(projects => this.projects = projects)
+  patchTodo() {
+    this.projectService.patchProject(1)
   }
-
-  showProjects() {
-    console.log(this.projectService.getProjects());
-  }
-
+  
 }

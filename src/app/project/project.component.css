@@ -1,0 +1,16 @@
+.project-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.project-container > mat-card {
+  margin: 20px 0;
+}
+
+.mat-checkbox-checked {
+  text-decoration: line-through;
+}
