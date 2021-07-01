@@ -10,13 +10,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import 'reflect-metadata';
+import { DialogNewTodoComponent } from './dialog-new-todo/dialog-new-todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectComponent
+    ProjectComponent,
+    DialogNewTodoComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import 'reflect-metadata';
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

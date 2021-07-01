@@ -9,6 +9,7 @@
 
 .project-container > mat-card {
   margin: 20px 0;
+  background-color:cornsilk;
 }
 
 .mat-checkbox-checked {

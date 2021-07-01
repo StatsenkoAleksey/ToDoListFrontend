@@ -20,7 +20,7 @@ export class ProjectComponent implements OnInit {
   }
 
   patchTodo() {
-    this.projectService.patchProject(1)
+    this.projectService.patchProject(2)
   }
   
 }

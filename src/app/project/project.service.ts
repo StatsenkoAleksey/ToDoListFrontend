@@ -9,8 +9,8 @@ export class ProjectService {
   constructor(private http: HttpClient) {}
 
   getProjects() {
-    return this.http.get<Object[]>(SERVER_URL+'/projects')
-    // return this.http.get<Object[]>(LOCAL_URL)
+    // return this.http.get<Object[]>(SERVER_URL+'/projects')
+    return this.http.get<Object[]>(LOCAL_URL)
   }
 
   patchProject(id: number, projectId: number = 1) {
@@ -22,7 +22,7 @@ export class ProjectService {
         console.error('There was an error during the request');
         console.log(error);
       })
-    console.log(`${SERVER_URL}/projects/${projectId}/todos/${id}`)
+    console.log(`${SERVER_URL}/projects/${projectId}/todos/${id}`);
     
   }
 
