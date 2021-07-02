@@ -3,10 +3,23 @@
   <span>Задачи</span>
   <span class="example-spacer"></span>
   <div class="add-task">
-    <button (click)="dialogOpen=true" mat-fab color="primary">+</button>
+    <button
+      (click)="openDialog()"
+      mat-fab
+      color="primary"
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin"
+    >
+      +
+    </button>
   </div>
 </mat-toolbar>
 
 <app-project></app-project>
-
-<app-dialog-new-todo *ngIf="dialogOpen"></app-dialog-new-todo>
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="dialogOpen"
+>
+  <app-dialog-new-todo *ngIf="dialogOpen"></app-dialog-new-todo>
+</ng-template>

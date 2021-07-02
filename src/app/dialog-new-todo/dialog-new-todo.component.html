@@ -1,9 +1,46 @@
-<div class="popup-fade">
-  <div class="popup">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Новая задача</mat-card-title>
-      </mat-card-header>
-    </mat-card>
-  </div>
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Новая задача</mat-card-title>
+    </mat-card-header>
+    <div>
+      <mat-form-field class="new-todo" appearance="fill">
+        <mat-label>Задача</mat-label>
+        <input matInput (input)="inputTodo($event)" value="" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Выберите категорию</mat-label>
+        <mat-select (selectionChange)="selectedValue($event)">
+          <mat-option
+            *ngFor="let iterProject of projectList"
+            value="{{ iterProject.id }}"
+            >{{ iterProject.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="newSelected">
+      <mat-form-field class="new-project" appearance="fill">
+        <mat-label>Категория</mat-label>
+        <input matInput (input)="inputProject($event)" value="" />
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        [mat-dialog-close]="true"
+        (click)="putInfo()"
+        [disabled]="disabledSubmit"
+        cdkFocusInitial
+      >
+        Создать
+      </button>
+      <button mat-raised-button mat-dialog-close (click)="onNoClick()">
+        Отмена
+      </button>
+    </div>
+  </mat-card>
 </div>

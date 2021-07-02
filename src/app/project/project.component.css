@@ -1,6 +1,6 @@
 .project-container {
   display: flex;
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 10px auto;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -8,8 +8,8 @@
 }
 
 .project-container > mat-card {
-  margin: 20px 0;
-  background-color:cornsilk;
+  margin: 20px 10px;
+  background-color: cornsilk;
 }
 
 .mat-checkbox-checked {
