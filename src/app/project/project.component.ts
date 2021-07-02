@@ -19,8 +19,8 @@ export class ProjectComponent implements OnInit {
     })
   }
 
-  patchTodo() {
-    this.projectService.patchProject(2)
+  patchTodo(id: number, project_id: number) {    
+    this.projectService.patchProject(id, project_id)
   }
   
 }
